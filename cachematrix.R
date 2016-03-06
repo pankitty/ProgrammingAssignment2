@@ -3,7 +3,7 @@
 
 rm(list=ls())
 
-cacheSolve<-function(x = matrix()) {
+makeCacheMatrix<-function(x = matrix()) {
         m <- NULL
         if_square<-function(x) {
                 if (dim(x)[1]==dim(x)[2]) 
@@ -17,7 +17,7 @@ cacheSolve<-function(x = matrix()) {
         list(get = get, setinverse = setinverse, getinverse = getinverse,if_square=if_square)        
 }
 
-makeCacheMatrix<-function(x,...) {
+cacheSolve<-function(x,...) {
         
         #### check if there is a stored results.
         m <- x$getinverse()
@@ -47,19 +47,11 @@ makeCacheMatrix<-function(x,...) {
 }
 
 
+########################################################
 
+matrix_example<- replicate(5, rnorm(5))
 
+x<-makeCacheMatrix(matrix_example)
 
-#########################################################################
-########### run the functions
+cacheSolve(x)
 
-#### create a random matrix 
-matrix_example<- replicate(5, rnorm(5)) 
-
-#### pass the data into cacheSolve function and create a data and function combination.
-x<-cacheSolve(matrix_example)
-
-#### run the final function. 
-makeCacheMatrix(x)
-
-##objects(cacheSolve())
