@@ -47,11 +47,19 @@ cacheSolve<-function(x,...) {
 }
 
 
-########################################################
 
-matrix_example<- replicate(5, rnorm(5))
 
+
+#########################################################################
+########### run the functions
+
+#### create a random matrix 
+matrix_example<- replicate(5, rnorm(5)) 
+
+#### pass the data into cacheSolve function and create a data and function combination.
 x<-makeCacheMatrix(matrix_example)
 
+#### run the final function. 
 cacheSolve(x)
 
+##objects(cacheSolve())
